@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dakar Taxi</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../styles/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed&amp;subset=cyrillic" rel="stylesheet">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+		</head>
+		<body>
+			<header>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2 disable-select">
+							<img src="../img/logo.jpg" alt="Dakar Taxi">
+						</div>
+						<div class="col-lg-5 menu"> <!-- Middle block -->
+							<div class="mob-nav">
+								<div class="stick"></div>
+								<div class="stick"></div>
+								<div class="stick"></div>
+							</div>
+							<ul class="nav disable-select hide-menu">
+								<li>
+									<a href="index.html">A la Une</a>
+								</li>
+								<li>
+									<a href="order.html">Appel de taxi</a>
+								</li>
+								<li>
+									<a href="info.html">Informations pour les conducteurs</a>
+								</li>
+								<li>
+									<a href="contacts.html">Contacts</a>
+								</li>
+							</ul>
+						</div> <!-- Middle block end -->
+						<div class="col-lg-5">
+							<div class="row">
+								<div class="col-lg-7">
+									<ul class="phones">
+										<li><a href="tel:+221785060366">+221 785 060 366</a></li>
+										<li><a href="tel:+221763581614">+221 763 581 614</a></li>
+										<li><a href="tel:+221785331172">+221 785 331 172</a></li>
+										<li><a href="tel:+221702057990">+221 702 057 990</a></li>
+									</ul>
+								</div>
+								<div class="col-lg-5 app-lang disable-select">
+									<a href="#" class="app-link"><img src="../img/app-store.png" alt="App Store"></a><br>
+									<a href="#" class="app-link"><img src="../img/google-play.png" alt="Play Market"></a>
+									<ul class="nav lang">
+										<li class="hide-lang-menu">
+											<a href="">fr</a>
+										</li>
+										<li class="hide-lang-menu">
+											<a href="">eng</a>
+										</li>
+										<li class="hide-lang-menu">
+											<a href="">ru</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div> <!-- End row -->
+				</div>
+			</header>
+			<div class="container-fluid main disable-select">
+				<div class="container green">
+					<div class="oto-div-body row">
+						<div class="col-lg-12">
+							<h1 class="box-head">Forme de Commande</h1>
+						</div>
+						<div class="col-lg-12">
+							<h2><span>Vos donnees</span></h2>
+						</div>
+						<div class="col-lg-6">
+							<p class="input">Numero de Telephone *</p>
+							<input class="left-input text-input" type="tel" id="inputphone" value="" placeholder="+221-___-___-___">
+						</div>
+						<div class="col-lg-6">
+							<p class="input">Nom</p>
+							<input type="text" class="text-input" id="username" value="">
+						</div>
+						<div class="col-lg-12">
+							<h2>
+								<span>Point de Depart</span>
+							</h2>
+						</div>
+						<div style="width:100%;">
+							<div class="col-lg-6">
+								<p class="input">Rue *</p>
+								<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input id="inputstreetfrom" class="autostreet ui-autocomplete-input left-input text-input" autocomplete="off">
+							</div>
+							<div class="oto-div-buildfrom div-build col-lg-6">
+								<p class="input">Maison</p>
+								<input class="text-input" id="inputbuildfrom">
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<h2>
+								<span>Lieu de Destination</span>
+							</h2>
+						</div>
+						<div id="streetarray">
+							<div class="streetto">
+								<div class="oto-div-streetto col-lg-6">
+									<p class="strtolable input">Rue</p>
+									<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input class="inputstreetto autostreet ui-autocomplete-input left-input text-input" autocomplete="off">							 
+								</div>
+								<div class="oto-div-buildto div-build col-lg-6">
+									<p class="buildtolable input">Maison</p>
+									<input class="inputbuildto text-input">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<h2>
+								<span>Commentaires</span>
+							</h2>
+							<div class="description-container">
+								<textarea id="inputdescription" placeholder="Ici vous pouvez ajouter une information supplémentaire à votre commande"></textarea>
+							</div>
+							<div class="oto-div-params">
+								<h2>
+									<span>En outre</span>
+								</h2>
+							</div>
+						</div>
+						<div class="oto-div-params">
+							<div class="col-lg-6">
+								<div>
+									<input type="checkbox" value="1" id="oto-IsBigTrunk" class="maskoptionorders"><label for="oto-IsBigTrunk">Coffre</label>
+								</div>
+								<div>
+									<input type="checkbox" value="2" id="oto-IsChildSeat" class="maskoptionorders"><label for="oto-IsChildSeat">Chaise enfant</label>
+								</div>
+								<div>
+									<input type="checkbox" value="16" id="oto-IsPets" class="maskoptionorders"><label for="oto-IsPets">Avec des animaux</label>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div>
+									<input type="checkbox" value="32" id="oto-IsLang" class="maskoptionorders"><label for="oto-IsLang">Parlant Anglais</label>
+								</div>
+								<div>
+									<input type="checkbox" value="256" id="oto-Cond" class="maskoptionorders"><label for="oto-Cond">Climatisation</label>
+								</div>
+							</div>
+						</div>
+					</div> <!-- end row -->
+					<div class="oto-div-panel oto-div-status" style="display: none">
+						<div class="oto-div-statustitle">
+							<span class="statustitlelable">Ваш заказ принят!</span>
+						</div>
+						<div class="oto-div-status">
+							<div><span class="statuslable">Statut: </span><span class="statustext"></span></div>
+							<!--<div><span class="driverlable">Водитель: </span><span class="drivertext"></span></div>-->
+							<div><span class="taxilable">Vehicule: </span><span class="taxitext"></span></div>
+							<div><span class="timelable">Heure d'arrivée: </span><span class="timetext"></span></div>
+							<div><span class="costlable">Le coût approximatif du voyage: </span><span class="costtext"></span></div>
+						</div>
+					</div>
+					<div class="oto-div-panel oto-div-execute" style="display: none">
+						<div class="oto-div-statustitle">
+							<span class="statustitlelable"></span>
+						</div>
+						<div>
+							<h2 class="executelable">Votre commande est traitée!</h2>
+						</div>
+					</div>
+					<div class="oto-div-panel oto-div-sms" style="display: none">
+						<span class="oto-smslable">Entrez le code du SMS</span>
+						<input type="text" value="0" id="smsCode"> <input type="button" value="Confirmer" id="oto-btnsms" class="oto-btn1">
+					</div> 
+					<div class="row">
+						<div class="oto-div-panel oto-div-create col-lg-12">				 
+							<div class="icon-div">
+								<input type="button" value="Commander" id="oto-btncreate" class="oto-btn" title="Bon de commande">
+							</div>
+							<input type="button" onclick="createneworder()" value="Créer nouvel ordre" id="oto-btnneworder" style="display:none;" class="oto-btn" title="Créer nouvel ordre">
+							<input type="button" value="Annuler" id="oto-btncancel" style="display: none" class="oto-btn" title="Annuler la commande en cours">
+							<input type="button" value="Créer nouvel ordre" id="oto-btnnew" style="display: none" class="oto-btn" title="Créer un nouvel ordre">
+						</div>	
+					</div>
+					<div class="oto-div-panel oto-div-error">
+						<div class="panel">
+							<div class="panel-body">
+								<!-- Error content -->
+							</div>
+						</div>
+					</div>
+				</div> <!-- end container -->
+			</div> <!-- Main end -->
+			<footer>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">Dakar, Hann-Maristes L/M29, office 204<br>
+							Mail: <a href="mailto:dakar-taxi@lotgate.com">dakar-taxi@lotgate.com</a>
+						</div>
+						<div class="col-lg-6 app-footer disable-select">
+							<a href="#" class="app-link"><img src="../img/app-store.png" alt="App Store"></a>
+							<br>
+							<a href="#" class="app-link"><img src="../img/google-play.png" alt="Play Market"></a>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- jQuery -->
+			<script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+			<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+			<!-- Bootstrap JavaScript -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+			<script src="../js/jquery.maskedinput.min.js"></script>
+			<script src="../js/OnlineOrder.js"></script>
+			<script src="../js/script.js"></script>
+			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+			<script src="Hello World"></script>
+
+		</body>
+		</html>

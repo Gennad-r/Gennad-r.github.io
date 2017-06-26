@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dakar Taxi</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="../styles/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed&amp;subset=cyrillic" rel="stylesheet">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+		</head>
+		<body>
+
+			<header>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2 disable-select">
+							<img src="../img/logo.jpg" alt="Dakar Taxi">
+						</div>
+						<div class="col-lg-5 menu"> <!-- Middle block -->
+							<div class="mob-nav">
+								<div class="stick"></div>
+								<div class="stick"></div>
+								<div class="stick"></div>
+							</div>
+							<ul class="nav disable-select hide-menu">
+								<li>
+									<a href="index.html">A la Une</a>
+								</li>
+								<li>
+									<a href="order.html">Appel de taxi</a>
+								</li>
+								<li>
+									<a href="info.html">Informations pour les conducteurs</a>
+								</li>
+								<li>
+									<a href="contacts.html">Contacts</a>
+								</li>
+							</ul>
+						</div> <!-- Middle block end -->
+						<div class="col-lg-5">
+							<div class="row">
+								<div class="col-lg-7">
+									<ul class="phones">
+										<li><a href="tel:+221785060366">+221 785 060 366</a></li>
+										<li><a href="tel:+221763581614">+221 763 581 614</a></li>
+										<li><a href="tel:+221785331172">+221 785 331 172</a></li>
+										<li><a href="tel:+221702057990">+221 702 057 990</a></li>
+									</ul>
+								</div>
+								<div class="col-lg-5 app-lang disable-select">
+									<a href="#" class="app-link"><img src="../img/app-store.png" alt="App Store"></a><br>
+									<a href="#" class="app-link"><img src="../img/google-play.png" alt="Play Market"></a>
+									<ul class="nav lang">
+										<li class="hide-lang-menu">
+											<a href="">fr</a>
+										</li>
+										<li class="hide-lang-menu">
+											<a href="">eng</a>
+										</li>
+										<li class="hide-lang-menu">
+											<a href="">ru</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div> <!-- End row -->
+				</div>
+			</header>
+			<div class="container-fluid main">
+				<div class="container green">
+					<div class="oto-div-body row">
+						<div class="col-lg-12">
+							<h1 class="box-head disable-select">Контакты</h1>
+						</div>
+						<div class="col-lg-12">
+							<p>Dakar, Hann-Maristes L/M29, office 204</p>
+							<div class="map">
+								<!-- Custom google map with custom marker -->
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<p>e-mail: <a href="mailto:dakar-taxi@lotgate.com">dakar-taxi@lotgate.com</a></p>
+							<!-- AJAX mail form -->
+							<form id="ajax-contact" method="post" action="mailer.php">
+								<div class="mail-container">
+									<textarea id="message" name="message" required placeholder="Напишите нам..."></textarea>
+								</div>
+								<div class="oto-div-create">
+									<div class="icon-div">
+										<input type="submit" value="Отправить" id="oto-btncreate" class="oto-btn" title="Notre operateur vous contactera!">
+									</div>
+								</div>
+							</form>
+							<div class="oto-div-panel oto-div-error">
+								<div class="panel">
+									<div class="panel-body">
+										<!-- Error content -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- end row -->
+				</div>
+			</div> <!-- Main end -->
+			<footer>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">Dakar, Hann-Maristes L/M29, office 204<br>
+							Mail: <a href="mailto:dakar-taxi@lotgate.com">dakar-taxi@lotgate.com</a>
+						</div>
+						<div class="col-lg-6 app-footer disable-select">
+							<a href="#" class="app-link"><img src="../img/app-store.png" alt="App Store"></a>
+							<br>
+							<a href="#" class="app-link"><img src="../img/google-play.png" alt="Play Market"></a>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- jQuery -->
+			<script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+			<!-- Bootstrap JavaScript -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+			<script src="../js/script.js"></script>
+			<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzfkSf4Yj-7tb8bsy9J_dHsIrNYgGOor8&callback=initMap">
+			</script>
+			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+			<script src="Hello World"></script>
+
+		</body>
+		</html>
