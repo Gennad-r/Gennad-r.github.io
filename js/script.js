@@ -137,18 +137,18 @@ goHome = document.querySelector('img[alt="Dakar Taxi"]');
 goHome.addEventListener('click', home);
 	function home (e) {
 		if (langName.match(/[^fr)][^ru)]/)) {
-	 window.location.assign("/DakarTaxi/");
+	 window.location.assign("/");
 	} else {
-	 window.location.assign("/DakarTaxi/" + langName);
+	 window.location.assign("/" + langName);
 	}
 	};
 
 
 for (var i = lan.length - 1; i >= 0; i--) {
 	lan[i].addEventListener("click", action);
-	lan[i].children[0].href = "/DakarTaxi/" + lan[i].children[0].innerHTML + "/" + pageName;
+	lan[i].children[0].href = "/" + lan[i].children[0].innerHTML + "/" + pageName;
 	if (lan[i].children[0].innerHTML == "eng") {
-			lan[i].children[0].href = "/DakarTaxi/" + pageName;
+			lan[i].children[0].href = "/" + pageName;
 		}
 	if (langName.match(/[^fr)][^ru)]/)) {
 		if (lan[i].children[0].innerHTML == "eng") {
