@@ -1,7 +1,7 @@
 ﻿
 var CityName = "Dakar";
 var PerfName = $.guid++;
-var url = "http://94.158.92.75:18000/MobileClientApiJson.svc";
+var url = "http://154.124.44.3:17005/MobileClientApiJson.svc";
 var MonthNames = ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
 var CityStreetObject = [];
 
