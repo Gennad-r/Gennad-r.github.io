@@ -85,7 +85,7 @@ function OtoCreateOrder() {
 
 
 function jsonpCreateOrder(data) {
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 		orderId = data.Context;
 		$("#oto-btncreate").removeAttr('disabled');
 		$(".icon-div").hide();
@@ -111,7 +111,7 @@ function jsonpCreateOrder(data) {
 function jsonpLoadStreet(street) {
 	data = street;
 
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 		for (var i = 0; i < data.Context.length; i++) {
 			var o = { value: data.Context[i].Id, label: data.Context[i].Name, option: 's' };
 			CityStreetObject.push(o);
@@ -127,7 +127,7 @@ function jsonpLoadTariff(tariff) {
 	data = tariff;
 	$("#taxitariffselect").empty();
 	
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 		
 		for (var i = 0; i < data.Context.length; i++) {
 
@@ -149,7 +149,7 @@ function jsonpLoadTariff(tariff) {
 function jsonpLoadObject(street) {
 	data = street;
 
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 		for (var i = 0; i < data.Context.length; i++) {
 			var o = { value: data.Context[i].Id, label: data.Context[i].Name + "*", option: 'o' };
 			CityStreetObject.push(o);
@@ -162,7 +162,7 @@ function jsonpLoadObject(street) {
 
 
 function jsonpStatusOrder(data) {
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 		var status = "";
 		switch (data.Context.Status) {
 			case 1:
@@ -212,7 +212,7 @@ function jsonpStatusOrder(data) {
 
 
 function jsonpGetCost(data) {
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 		$("#oto-cost").html(" Примерная стоимость поездки: " + data.Context + " XOF");
 	} else {
 		$("#oto-cost").html(data.Context);
@@ -221,7 +221,7 @@ function jsonpGetCost(data) {
 
 
 function jsonpCancelOrder(data) {
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 
 		clearInterval(intervalID);
 
@@ -476,7 +476,7 @@ function addAddressTo() {
 
 function jsonpLoadBuild(data) {
 
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 
 		var array = [];
 		for (var i = 0; i < data.Context.length; i++) {
@@ -523,7 +523,7 @@ function SetBuildInput(obj, id) {
 
 function jsonpCheckClient(data) {
 
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 		if (data.Context.IsAuth) {
 			
 			OtoCreateOrder();
@@ -606,7 +606,7 @@ function CheckClient() {
 
 function jsonpCheckClientCode(data) {
 
-	if (data.Status == "OK") {
+	if (data.ErrorCode == 0) {
 		$(".panel-body").hide();
 		$(".oto-div-error .panel-body").html("");
 		$("#oto-btncreate").removeAttr("disabled");
