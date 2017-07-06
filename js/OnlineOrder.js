@@ -1,5 +1,4 @@
-﻿
-var CityName = "Dakar";
+﻿var CityName = "Dakar";
 var PerfName = $.guid++;
 var url = "http://154.124.44.3:17005/MobileClientApiJson.svc";
 var MonthNames = ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
@@ -188,7 +187,12 @@ function jsonpStatusOrder(data) {
 		$(".drivertext").text(data.Context.PerformerName);
 		$(".taxitext").text(data.Context.TaxisModel + "  " + data.Context.TaxisNumber);
 		$(".timetext").text(data.Context.DateComing);
-		$(".costtext").text("  "+data.Context.Price+" XOF");
+		
+		if (data.Context.Price == '0,00') {
+			$(".costtext").text("  " + "по тарифу");
+		} else {
+			$(".costtext").text("  "+data.Context.Price+" Cfa");
+		}
 
 		if (data.Context.Status == 6) {
 			clearInterval(intervalID);
@@ -212,11 +216,15 @@ function jsonpStatusOrder(data) {
 
 
 function jsonpGetCost(data) {
-	if (data.ErrorCode == 0) {
-		$("#oto-cost").html(" Примерная стоимость поездки: " + data.Context + " XOF");
-	} else {
-		$("#oto-cost").html(data.Context);
-	}
+    if (data.ErrorCode == 0) {
+		if (data.Context == '0,00') {
+			$("#oto-cost").html(" Примерная стоимость поездки: " + "по тарифу");
+		} else {
+			$("#oto-cost").html(" Примерная стоимость поездки: " + data.Context + " Cfa");
+		}
+    } else {
+        $("#oto-cost").html(data.Context);
+    }
 }
 
 
@@ -557,7 +565,7 @@ function CheckClient() {
 		create = 0;
 	} else 
 
-	if  ($("#username").val() == "") {
+	if  (!$("#username").val() == "") {
 		$(".oto-div-error .panel-body").html("Введите имя!");
 		$(".panel-body").css("opacity", 1);
 		create = 0;
