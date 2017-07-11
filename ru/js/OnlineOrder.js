@@ -1,7 +1,7 @@
 ﻿var CityName = "Dakar";
 var PerfName = $.guid++;
 var url = "http://154.124.44.3:17005/MobileClientApiJson.svc";
-var MonthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sen", "oct", "nov", "dec"];
+var MonthNames = ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
 var CityStreetObject = [];
 
 var intervalID;
@@ -102,7 +102,7 @@ function jsonpCreateOrder(data) {
 		intervalID = setInterval(OtoStatusOrder, 4000);
 	} else {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error .panel-body").html("Error. Try again.");
+		$(".oto-div-error .panel-body").html("При отправке произошла ошибка. Повторите попытку еще раз.");
 	}
 }
 
@@ -136,11 +136,11 @@ function jsonpLoadTariff(tariff) {
 		}
 		if(data.Context.length==0)
 		{
-			$("#taxitariffselect").append("<option value='0'>no</option>");
+			$("#taxitariffselect").append("<option value='0'>нет</option>");
 		}
 
 	} else {
-		$("#taxitariffselect").append("<option value='0'>no</option>");
+		$("#taxitariffselect").append("<option value='0'>нет</option>");
 	}
 }
 
@@ -165,23 +165,23 @@ function jsonpStatusOrder(data) {
 		var status = "";
 		switch (data.Context.Status) {
 			case 1:
-			status = "New order"; break;
+			status = "Новый заказ"; break;
 			case 2:
-			status = "Goes to the customer"; break;
+			status = "Едет к клиенту"; break;
 			case 3:
-			status = "Waiting for customer"; break;
+			status = "Ждет клиента"; break;
 			case 4:
-			status = "Customer notified"; break;
+			status = "Клиент оповещен"; break;
 			case 5:
-			status = "In transit"; break;
+			status = "В пути"; break;
 			case 6:
-			status = "Completed"; break;
+			status = "Выполнен"; break;
 			case 7:
-			status = "Canceled"; break;
+			status = "Отменен"; break;
 			case 8:
-			status = "Delay"; break;
+			status = "Опаздывает"; break;
 
-			default: status = "not specified";
+			default: status = "не указан";
 		}
 		$(".statustext").text(status);
 		$(".drivertext").text(data.Context.PerformerName);
@@ -189,7 +189,7 @@ function jsonpStatusOrder(data) {
 		$(".timetext").text(data.Context.DateComing);
 		
 		if (data.Context.Price == '0,00') {
-			$(".costtext").text("  " + "by tariff");
+			$(".costtext").text("  " + "по тарифу");
 		} else {
 			$(".costtext").text("  "+data.Context.Price+" Cfa");
 		}
@@ -218,9 +218,9 @@ function jsonpStatusOrder(data) {
 function jsonpGetCost(data) {
     if (data.ErrorCode == 0) {
 		if (data.Context == '0,00') {
-			$("#oto-cost").html(" Approximate cost of the trip: " + "by tariff");
+			$("#oto-cost").html(" Примерная стоимость поездки: " + "по тарифу");
 		} else {
-			$("#oto-cost").html(" Approximate cost of the trip: " + data.Context + " Cfa");
+			$("#oto-cost").html(" Примерная стоимость поездки: " + data.Context + " Cfa");
 		}
     } else {
         $("#oto-cost").html(data.Context);
@@ -236,29 +236,29 @@ function jsonpCancelOrder(data) {
 		var status = "";
 		switch (data.Context.Status) {
 			case 1:
-			status = "New order"; break;
+			status = "Новый заказ"; break;
 			case 2:
-			status = "Goes to the customer"; break;
+			status = "Едет к клиенту"; break;
 			case 3:
-			status = "Waiting for customer"; break;
+			status = "Ждет клиента"; break;
 			case 4:
-			status = "Customer notified"; break;
+			status = "Клиент оповещен"; break;
 			case 5:
-			status = "In transit"; break;
+			status = "В пути"; break;
 			case 6:
-			status = "Completed"; break;
+			status = "Выполнен"; break;
 			case 7:
-			status = "Canceled"; break;
+			status = "Отменен"; break;
 			case 8:
-			status = "Delay"; break;
+			status = "Опаздывает"; break;
 
-			default: status = "not specified";
+			default: status = "не указан";
 		}
 		$(".statustext").text(status);
 		$(".drivertext").text(data.Context.PerformerName);
 		$(".taxitext").text(data.Context.TaxisModel + "  " + data.Context.TaxisNumber);
 		$(".timetext").text(data.Context.DateComing);
-		$(".costtext").text(" from "+data.Context.Price);
+		$(".costtext").text(" от "+data.Context.Price);
 		orderId = 0;
 		$("#oto-btncreate").show();
 		$("#oto-btncancel").hide();
@@ -443,7 +443,7 @@ function delpoint(e) {
 function addAddressTo() {
 	if ($(".streetto").length < 3) {
 		$("#oto-cost").html("");
-		$("#streetarray").append('<div class="streetto addstreet"><div class="oto-div-streetto"><span class="strtolable">Street</span><input class="inputstreetto autostreet"/> <b class="addrdel" style="color: red; cursor:pointer;" onclick="delpoint(this);">X</b></div><div class="oto-div-buildto div-build"><span class="buildtolable">Build</span><input class="inputbuildto" /></div><div class="oto-div-porchto"><span class="porchtolable">Porch</span><input class="inputporchto" /></div></div>');
+		$("#streetarray").append('<div class="streetto addstreet"><div class="oto-div-streetto"><span class="strtolable">Улица</span><input class="inputstreetto autostreet"/> <b class="addrdel" style="color: red; cursor:pointer;" onclick="delpoint(this);">X</b></div><div class="oto-div-buildto div-build"><span class="buildtolable">Дом</span><input class="inputbuildto" /></div><div class="oto-div-porchto"><span class="porchtolable">Подъезд</span><input class="inputporchto" /></div></div>');
 		$(".autostreet").autocomplete({
 			minLength: 3,
 			source: CityStreetObject,
@@ -477,7 +477,7 @@ function addAddressTo() {
 		});
 } else {
 	$(".panel-body").css("opacity", 1);
-	$(".oto-div-error .panel-body").html("The limit of the number of waypoints has been reached!");
+	$(".oto-div-error .panel-body").html("Достигнут предел количества точек пути!");
 }      
 }
 
@@ -542,7 +542,7 @@ function jsonpCheckClient(data) {
 		} else {
 			$(".oto-div-sms").show();
 			$(".panel-body").css("opacity", 1);
-			$(".oto-div-error .panel-body").html("SMS with the code for authorization was sent to your phone!  ");
+			$(".oto-div-error .panel-body").html("На Ваш телефон отправлена СМС с кодом для авторизации!  ");
 			
 			$("#oto-btncreate").attr("disabled", "disabled");
 		}
@@ -561,19 +561,19 @@ function CheckClient() {
 
 	if (phone.search(/^\+[0-9]{12}$/) == -1) {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error .panel-body").html("Enter the correct phone number!");
+		$(".oto-div-error .panel-body").html("Введите правильно телефон!");
 		create = 0;
 	} else 
 
 	if  (!$("#username").val() == "") {
-		$(".oto-div-error .panel-body").html("Enter your name!");
+		$(".oto-div-error .panel-body").html("Введите имя!");
 		$(".panel-body").css("opacity", 1);
 		create = 0;
 	} else
 
 	if ($("#inputstreetfrom").val() == "") {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error .panel-body").html("Enter pickup location!");
+		$(".oto-div-error .panel-body").html("Укажите адрес подачи!");
 		create = 0;
 	} else
 
@@ -581,7 +581,7 @@ function CheckClient() {
 
 		if ($("#inputstreetfrom").val() != "" && $("#inputbuildfrom").val() == "") {
 			$(".panel-body").css("opacity", 1);
-			$(".oto-div-error .panel-body").html("Enter building number in pickup location!");
+			$(".oto-div-error .panel-body").html("Укажите дом в адресе подачи!");
 			create = 0;
 		}
 	} else
@@ -597,7 +597,7 @@ function CheckClient() {
 			}
 			if (goes == 0) {
 				$(".panel-body").css("opacity", 1);
-				$(".oto-div-error .panel-body").html("Enter the correct waypoint!");
+				$(".oto-div-error .panel-body").html("Введите правильно точку маршрута!");
 				create = 0;
 			}
 		}
@@ -622,7 +622,7 @@ function jsonpCheckClientCode(data) {
 		OtoCreateOrder();
 	} else {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error .panel-body").html("You have " + data.Context + " attempts left! " + data.ErrorMessage);
+		$(".oto-div-error .panel-body").html("У Вас осталось " + data.Context + " попыток! " + data.ErrorMessage);
 	}
 
 }
@@ -635,7 +635,7 @@ function CheckClientCode() {
 		
 	} else {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error  .panel-body").html("Enter the code from the SMS!");
+		$(".oto-div-error  .panel-body").html("Введите код из СМС!");
 	}
 	
 }
