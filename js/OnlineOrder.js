@@ -723,7 +723,7 @@ $(function () {
 
 
 function createneworder() {
-	if (confirm("При создании нового заказа информация о статусе текущего заказа, а так же его отмена станет недоступна. Вы подтверждаете создание нового заказа?")) {
+	if (confirm("When creating a new order, the information about current order status will be unavailable. Are you sure you want to create a new order?")) {
 		return document.location.reload();
 	} else {
 		return false;
