@@ -189,7 +189,7 @@ function jsonpStatusOrder(data) {
 		$(".timetext").text(data.Context.DateComing);
 		
 		if (data.Context.Price == '0,00') {
-			$(".costtext").text("  " + "по тарифу");
+			$(".costtext").text("  " + "par tarif");
 		} else {
 			$(".costtext").text("  "+data.Context.Price+" Cfa");
 		}
@@ -218,7 +218,7 @@ function jsonpStatusOrder(data) {
 function jsonpGetCost(data) {
     if (data.ErrorCode == 0) {
 		if (data.Context == '0,00') {
-			$("#oto-cost").html(" Prix approximatif du trajet: " + "по тарифу");
+			$("#oto-cost").html(" Prix approximatif du trajet: " + "par tarif");
 		} else {
 			$("#oto-cost").html(" Prix approximatif du trajet: " + data.Context + " Cfa");
 		}
@@ -477,7 +477,7 @@ function addAddressTo() {
 		});
 } else {
 	$(".panel-body").css("opacity", 1);
-	$(".oto-div-error .panel-body").html("Достигнут предел количества точек пути!");
+	$(".oto-div-error .panel-body").html("Surplus sur le nombre du trajet!");
 }      
 }
 
