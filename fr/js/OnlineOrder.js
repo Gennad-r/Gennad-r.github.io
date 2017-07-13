@@ -1,7 +1,7 @@
 ﻿var CityName = "Dakar";
 var PerfName = $.guid++;
 var url = "http://154.124.44.3:17005/MobileClientApiJson.svc";
-var MonthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sen", "Oct", "Nov", "Dec"];
+var MonthNames = ["Jan", "Fev", "Mar", "Avr", "Mai", "Juin", "Juil", "Aout", "Sep", "Oct", "Nov", "Dec"];
 var CityStreetObject = [];
 
 var intervalID;
@@ -102,7 +102,7 @@ function jsonpCreateOrder(data) {
 		intervalID = setInterval(OtoStatusOrder, 4000);
 	} else {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error .panel-body").html("Error. Try again.");
+		$(".oto-div-error .panel-body").html("Erreur lors de l envoi, refaire svp.");
 	}
 }
 
@@ -136,11 +136,11 @@ function jsonpLoadTariff(tariff) {
 		}
 		if(data.Context.length==0)
 		{
-			$("#taxitariffselect").append("<option value='0'>no</option>");
+			$("#taxitariffselect").append("<option value='0'>Non</option>");
 		}
 
 	} else {
-		$("#taxitariffselect").append("<option value='0'>no</option>");
+		$("#taxitariffselect").append("<option value='0'>Non</option>");
 	}
 }
 
@@ -165,23 +165,23 @@ function jsonpStatusOrder(data) {
 		var status = "";
 		switch (data.Context.Status) {
 			case 1:
-			status = "New order"; break;
+			status = "Nouvelle commande"; break;
 			case 2:
-			status = "Goes to the client"; break;
+			status = "En route vers le client"; break;
 			case 3:
-			status = "Waiting for client"; break;
+			status = "En attente du client"; break;
 			case 4:
-			status = "Customer notified"; break;
+			status = "Client averti"; break;
 			case 5:
-			status = "In transit"; break;
+			status = "En route"; break;
 			case 6:
-			status = "Completed"; break;
+			status = "Realise"; break;
 			case 7:
-			status = "Canceled"; break;
+			status = "Annule"; break;
 			case 8:
-			status = "Late"; break;
+			status = "En retard"; break;
 
-			default: status = "not specified";
+			default: status = "non defini";
 		}
 		$(".statustext").text(status);
 		$(".drivertext").text(data.Context.PerformerName);
@@ -189,7 +189,7 @@ function jsonpStatusOrder(data) {
 		$(".timetext").text(data.Context.DateComing);
 		
 		if (data.Context.Price == '0,00') {
-			$(".costtext").text("  " + "by tariff");
+			$(".costtext").text("  " + "по тарифу");
 		} else {
 			$(".costtext").text("  "+data.Context.Price+" Cfa");
 		}
@@ -218,9 +218,9 @@ function jsonpStatusOrder(data) {
 function jsonpGetCost(data) {
     if (data.ErrorCode == 0) {
 		if (data.Context == '0,00') {
-			$("#oto-cost").html(" Approximate cost of the trip: " + "by tariff");
+			$("#oto-cost").html(" Prix approximatif du trajet: " + "по тарифу");
 		} else {
-			$("#oto-cost").html(" Approximate cost of the trip: " + data.Context + " Cfa");
+			$("#oto-cost").html(" Prix approximatif du trajet: " + data.Context + " Cfa");
 		}
     } else {
         $("#oto-cost").html(data.Context);
@@ -236,29 +236,29 @@ function jsonpCancelOrder(data) {
 		var status = "";
 		switch (data.Context.Status) {
 			case 1:
-			status = "New order"; break;
+			status = "Nouvelle commande"; break;
 			case 2:
-			status = "Goes to the client"; break;
+			status = "En route vers le client"; break;
 			case 3:
-			status = "Waiting for client"; break;
+			status = "En attente du client"; break;
 			case 4:
-			status = "Customer notified"; break;
+			status = "Client averti"; break;
 			case 5:
-			status = "In transit"; break;
+			status = "En route"; break;
 			case 6:
-			status = "Completed"; break;
+			status = "Realise"; break;
 			case 7:
-			status = "Canceled"; break;
+			status = "Annule"; break;
 			case 8:
-			status = "Late"; break;
+			status = "En retard"; break;
 
-			default: status = "not specified";
+			default: status = "non defini";
 		}
 		$(".statustext").text(status);
 		$(".drivertext").text(data.Context.PerformerName);
 		$(".taxitext").text(data.Context.TaxisModel + "  " + data.Context.TaxisNumber);
 		$(".timetext").text(data.Context.DateComing);
-		$(".costtext").text(" from "+data.Context.Price);
+		$(".costtext").text(" de "+data.Context.Price);
 		orderId = 0;
 		$("#oto-btncreate").show();
 		$("#oto-btncancel").hide();
@@ -443,7 +443,7 @@ function delpoint(e) {
 function addAddressTo() {
 	if ($(".streetto").length < 3) {
 		$("#oto-cost").html("");
-		$("#streetarray").append('<div class="streetto addstreet"><div class="oto-div-streetto"><span class="strtolable">Street</span><input class="inputstreetto autostreet"/> <b class="addrdel" style="color: red; cursor:pointer;" onclick="delpoint(this);">X</b></div><div class="oto-div-buildto div-build"><span class="buildtolable">Build</span><input class="inputbuildto" /></div><div class="oto-div-porchto"><span class="porchtolable">Porch</span><input class="inputporchto" /></div></div>');
+		$("#streetarray").append('<div class="streetto addstreet"><div class="oto-div-streetto"><span class="strtolable">Rue</span><input class="inputstreetto autostreet"/> <b class="addrdel" style="color: red; cursor:pointer;" onclick="delpoint(this);">X</b></div><div class="oto-div-buildto div-build"><span class="buildtolable">Maison</span><input class="inputbuildto" /></div><div class="oto-div-porchto"><span class="porchtolable">Entree</span><input class="inputporchto" /></div></div>');
 		$(".autostreet").autocomplete({
 			minLength: 3,
 			source: CityStreetObject,
@@ -477,7 +477,7 @@ function addAddressTo() {
 		});
 } else {
 	$(".panel-body").css("opacity", 1);
-	$(".oto-div-error .panel-body").html("The limit of the number of waypoints has been reached!");
+	$(".oto-div-error .panel-body").html("Достигнут предел количества точек пути!");
 }      
 }
 
@@ -542,7 +542,7 @@ function jsonpCheckClient(data) {
 		} else {
 			$(".oto-div-sms").show();
 			$(".panel-body").css("opacity", 1);
-			$(".oto-div-error .panel-body").html("Your SMS has been sent to your phone with authorization code!");
+			$(".oto-div-error .panel-body").html("SMS envoye sur votre telephone avec code de denarrage!");
 			
 			$("#oto-btncreate").attr("disabled", "disabled");
 		}
@@ -561,19 +561,19 @@ function CheckClient() {
 
 	if (phone.search(/^\+[0-9]{12}$/) == -1) {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error .panel-body").html("Enter the correct phone number!");
+		$(".oto-div-error .panel-body").html("Inserer le numero correct!");
 		create = 0;
 	} else 
 
 	if  (!$("#username").val() == "") {
-		$(".oto-div-error .panel-body").html("Enter your name!");
+		$(".oto-div-error .panel-body").html("Entrez le nom!");
 		$(".panel-body").css("opacity", 1);
 		create = 0;
 	} else
 
 	if ($("#inputstreetfrom").val() == "") {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error .panel-body").html("Specify the pick-up address!");
+		$(".oto-div-error .panel-body").html("Definissez ladresse d envoi!");
 		create = 0;
 	} else
 
@@ -581,7 +581,7 @@ function CheckClient() {
 
 		if ($("#inputstreetfrom").val() != "" && $("#inputbuildfrom").val() == "") {
 			$(".panel-body").css("opacity", 1);
-			$(".oto-div-error .panel-body").html("Indicate the house in the pick-up address!");
+			$(".oto-div-error .panel-body").html("Definissez l adresse de la maison!");
 			create = 0;
 		}
 	} else
@@ -597,7 +597,7 @@ function CheckClient() {
 			}
 			if (goes == 0) {
 				$(".panel-body").css("opacity", 1);
-				$(".oto-div-error .panel-body").html("Enter the correct waypoint!");
+				$(".oto-div-error .panel-body").html("Definer le trajet!");
 				create = 0;
 			}
 		}
@@ -622,7 +622,7 @@ function jsonpCheckClientCode(data) {
 		OtoCreateOrder();
 	} else {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error .panel-body").html("You have " + data.Context + " attempts! " + data.ErrorMessage);
+		$(".oto-div-error .panel-body").html("Il vous reste " + data.Context + " essais! " + data.ErrorMessage);
 	}
 
 }
@@ -635,7 +635,7 @@ function CheckClientCode() {
 		
 	} else {
 		$(".panel-body").css("opacity", 1);
-		$(".oto-div-error  .panel-body").html("Enter the code from the SMS!");
+		$(".oto-div-error  .panel-body").html("Entrer le code SMS!");
 	}
 	
 }
@@ -723,7 +723,7 @@ $(function () {
 
 
 function createneworder() {
-	if (confirm("When creating a new order, the information about current order status will be unavailable. Are you sure you want to create a new order?")) {
+	if (confirm("Au cours de la nouvelle commande, l information sur son statut et son annulation reste inacessible. Vous confirmez la nouvelle commande?")) {
 		return document.location.reload();
 	} else {
 		return false;
