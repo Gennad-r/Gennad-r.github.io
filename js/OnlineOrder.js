@@ -561,17 +561,22 @@ function CheckClient() {
 
 	if (phone.search(/^\+[0-9]{12}$/) == -1) {
 		$(".panel-body").css("opacity", 1);
+		$("#inputphone").addClass('red');
 		$(".oto-div-error .panel-body").html("Enter the correct phone number!");
 		create = 0;
 	} else 
 
 	if  ($("#username").val() == "") {
+		$("#inputphone").removeClass('red');
 		$(".oto-div-error .panel-body").html("Enter your name!");
+		$("#username").addClass('red');
 		$(".panel-body").css("opacity", 1);
 		create = 0;
 	} else
 
 	if ($("#inputstreetfrom").val() == "") {
+		$("#username").removeClass('red');
+		$("#inputstreetfrom").addClass('red');
 		$(".panel-body").css("opacity", 1);
 		$(".oto-div-error .panel-body").html("Specify the pick-up address!");
 		create = 0;
@@ -580,6 +585,7 @@ function CheckClient() {
 	if ($("#inputstreetfrom").attr("alt") != "o") {
 
 		if ($("#inputstreetfrom").val() != "" && $("#inputbuildfrom").val() == "") {
+			$("#inputbuildfrom").addClass('red');
 			$(".panel-body").css("opacity", 1);
 			$(".oto-div-error .panel-body").html("Indicate the house in the pick-up address!");
 			create = 0;
@@ -605,6 +611,8 @@ function CheckClient() {
 	
 	if (create == 1) {
 		
+		$("#inputstreetfrom").removeClass('red');
+		$("#inputbuildfrom").removeClass('red');
 		var obj = { PhoneNumber: $("#inputphone").val().replace(/[\+\-]/g, ""), ClientId: PerfName };
 		$.getJSON(url + "/CheckClientWeb?callBack=?" + "&value=" + JSON.stringify(obj), jsonpCheckClient);
 	}
