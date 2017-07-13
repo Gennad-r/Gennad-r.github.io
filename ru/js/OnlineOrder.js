@@ -565,7 +565,7 @@ function CheckClient() {
 		create = 0;
 	} else 
 
-	if  (!$("#username").val() == "") {
+	if  ($("#username").val() == "") {
 		$(".oto-div-error .panel-body").html("Введите имя!");
 		$(".panel-body").css("opacity", 1);
 		create = 0;
