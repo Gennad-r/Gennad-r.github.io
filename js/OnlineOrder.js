@@ -584,6 +584,7 @@ function CheckClient() {
 
 	if ($("#inputstreetfrom").attr("alt") != "o") {
 
+		$("#username").removeClass('red');
 		if ($("#inputstreetfrom").val() != "" && $("#inputbuildfrom").val() == "") {
 			$("#inputbuildfrom").addClass('red');
 			$(".panel-body").css("opacity", 1);
