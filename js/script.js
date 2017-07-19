@@ -1,4 +1,5 @@
-// Internet Explorer 6-11 detection
+(function () {
+	// Internet Explorer 6-11 detection
 var isIE = /*@cc_on!@*/false || !!document.documentMode;
 
 // Edge 20+ detection
@@ -201,3 +202,4 @@ $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
   ipData = data;
 });
 */
+})();
