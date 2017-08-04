@@ -1,4 +1,4 @@
-﻿var txt = {
+var txt = {
 	"month": {
 		"en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sen", "Oct", "Nov", "Dec"],
 		"ru": ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"],
@@ -153,7 +153,7 @@ var lang = $('html')[0].lang;
 var MonthNames = txt.month[lang];
 var CityName = "Dakar";
 var PerfName = $.guid++;
-var url = "http://154.124.44.3:17005/MobileClientApiJson.svc";
+var url = "http://154.124.46.37:17005/MobileClientApiJson.svc";
 
 var CityStreetObject = [];
 
@@ -768,6 +768,12 @@ function CheckClient() {
 		$("#inputbuildfrom").removeClass('red');
 		var obj = { PhoneNumber: $("#inputphone").val().replace(/[\+\-]/g, ""), ClientId: PerfName };
 		$.getJSON(url + "/CheckClientWeb?callBack=?" + "&value=" + JSON.stringify(obj), jsonpCheckClient);
+		//ga('send', 'event', 'order', 'send');
+		ga('send', {
+			  hitType: 'event',
+			  eventCategory: 'order',
+			  eventAction: 'send'
+			});
 	}
 
 }

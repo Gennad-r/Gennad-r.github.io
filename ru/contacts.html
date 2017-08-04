@@ -9,8 +9,8 @@
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<script async src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script async src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	<meta name="theme-color" content="#139700">
 	<meta name="msapplication-TileColor" content="#139700">
@@ -92,24 +92,7 @@
 							<p>e-mail: <a href="mailto:dakar-taxi@lotgate.com?subject=Dakar%20Taxi">dakar-taxi@lotgate.com</a></p>
 							
 
-							<!-- AJAX mail form -->
-							<form id="ajax-contact" method="post" action="mailer.php">
-								<div class="mail-container">
-									<textarea id="message" name="message" required placeholder="Напишите нам..."></textarea>
-								</div>
-								<div class="oto-div-create">
-									<div class="icon-div">
-										<input type="submit" value="Отправить" id="oto-btncreate" class="oto-btn" title="Наш оператор свяжется с вами в ближайшее время!">
-									</div>
-								</div>
-							</form>
-							<div class="oto-div-panel oto-div-error">
-								<div class="panel">
-									<div class="panel-body">
-										<!-- Error content -->
-									</div>
-								</div>
-							</div>
+							
 							
 							<!-- AJAX mail form -->
 							<form id="ajax-contact">
@@ -117,6 +100,8 @@
 								<input type="hidden" name="project_name" value="Dakar Taxi">
 								<input type="hidden" name="admin_email" value="dakar-taxi@lotgate.com">
 								<input type="hidden" name="form_subject" value="Dakar Taxi customer response (russian)">
+								<input type="hidden" name="customer-country" value="Not specified">
+								<input type="hidden" name="customer-ip" value="Not specified">
 								<!-- END Hidden Required Fields -->
 
 								<div class="mail-container">
@@ -159,11 +144,11 @@
 	<link rel="stylesheet" href="../styles/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed&amp;subset=cyrillic" rel="stylesheet">
 <!-- jQuery -->
-			<script src="https://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+			<script async src="https://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
 			<!-- Bootstrap JavaScript -->
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-			<script src="../js/script-min.js"></script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFnRCubdv-BGnTMkAcUSwrRmdessxUHcI&callback=initMap" async defer></script>
+			<script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+			<script async src="../js/script-min.js"></script>
+			<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFnRCubdv-BGnTMkAcUSwrRmdessxUHcI&callback=initMap" async defer></script>
 			
 			
 

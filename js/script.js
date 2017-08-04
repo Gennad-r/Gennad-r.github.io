@@ -36,23 +36,23 @@ if (document.querySelector(".start-contaner")) {
 	if (isIE||isEdge) {
 		document.querySelector(".start-contaner svg").lastElementChild.innerHTML = ''
 		setTimeout(function(){
-		    document.querySelector(".start-contaner").style.opacity = 0;
-		    setTimeout(function(){
-		        document.querySelector("svg").style.transform = 'scaleY(0)';
-		        setTimeout(function () {
-		        	document.querySelector(".start-contaner").style.display = "none";
-		        }, 450);
-		    }, 50);
+				document.querySelector(".start-contaner").style.opacity = 0;
+				setTimeout(function(){
+						document.querySelector("svg").style.transform = 'scaleY(0)';
+						setTimeout(function () {
+							document.querySelector(".start-contaner").style.display = "none";
+						}, 450);
+				}, 50);
 		}, 500);
 	} else {
 		setTimeout(function(){
-		    document.querySelector(".start-contaner").style.opacity = 0;
-		    setTimeout(function(){
-		        document.querySelector("svg").style.transform = 'scaleY(0)';
-		        setTimeout(function () {
-		        	document.querySelector(".start-contaner").style.display = "none";
-		        }, 800);
-		    }, 200);
+				document.querySelector(".start-contaner").style.opacity = 0;
+				setTimeout(function(){
+						document.querySelector("svg").style.transform = 'scaleY(0)';
+						setTimeout(function () {
+							document.querySelector(".start-contaner").style.display = "none";
+						}, 800);
+				}, 200);
 		}, 3000);
 	}
 };
@@ -62,53 +62,7 @@ if (document.querySelector(".start-contaner")) {
 
 
 
-//Google map for contacts
-function initMap() {
 
-	// Specify features and elements to define styles.
-	var styleArray = [
-	{
-		featureType: "all",
-		stylers: [
-		{ hue: "#139700" },
-		{ saturation: 50 }
-		]
-	},{
-		featureType: 'water',
-		elementType: 'geometry.fill',
-		stylers: [{color: '#068aab'}]
-	},{
-		featureType: "road",
-		elementType: "geometry",
-		stylers: [
-		{ hue: "#4f3102" }
-		]
-	},{
-		featureType: "poi.business",
-		elementType: "labels",
-		stylers: [
-		{ visibility: "off" }
-		]
-	}
-	];
-
-	// Create a map object and specify the DOM element for display.
-	var dakarTaxi = {lat: 14.727550, lng: -17.436767}; 
-	var map = new google.maps.Map(document.getElementsByClassName('map')[0], {
-		center: dakarTaxi,
-		scrollwheel: false,
-		// Apply the map style array to the map.
-		styles: styleArray,
-		zoom: 15
-	});
-	var marker = new google.maps.Marker({
-		map: map,
-		position: dakarTaxi,
-		icon: '/img/head-car-map.png',
-		title: 'Dakar Taxi office'
-	});
-
-}
 
 
 (function () {
@@ -166,40 +120,80 @@ function action (e) {
 })();
 //----------------Ajax query----------------------
 
-	$("form").submit(function() { //Change
+$("form").submit(function() { //Change
 		var th = $(this);
-		$.ajax({
-			type: "POST",
-			url: "/mail.php", //Change
-			data: th.serialize()
-		}).done(function() {
-			$('form').fadeOut('slow', function () { $('.panel .panel-body').css({'opacity': '1'}); } );
+		
+		$.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+			$("input[name='customer-country']").attr('value', data.country_name);
+			$("input[name='customer-ip']").attr('value', data.ip);
+			$.ajax({
+				type: "POST",
+				url: "/mail.php", //Change
+				data: th.serialize()
+			}).done(function() {
+				$('form').fadeOut('slow', function () { $('.panel .panel-body').css({'opacity': '1'}); } );
+			});
 		});
-		return false;
+	
+	return false;
+});
+
+
+
+
+})();
+//Google map for contacts
+function initMap() {
+
+	// Specify features and elements to define styles.
+	var styleArray = [
+	{
+		featureType: "all",
+		stylers: [
+		{ hue: "#139700" },
+		{ saturation: 50 }
+		]
+	},{
+		featureType: 'water',
+		elementType: 'geometry.fill',
+		stylers: [{color: '#068aab'}]
+	},{
+		featureType: "road",
+		elementType: "geometry",
+		stylers: [
+		{ hue: "#4f3102" }
+		]
+	},{
+		featureType: "poi.business",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		]
+	}
+	];
+
+	// Create a map object and specify the DOM element for display.
+	var dakarTaxi = {lat: 14.727550, lng: -17.436767}; 
+	var map = new google.maps.Map(document.getElementsByClassName('map')[0], {
+		center: dakarTaxi,
+		scrollwheel: false,
+		// Apply the map style array to the map.
+		styles: styleArray,
+		zoom: 15
+	});
+	var marker = new google.maps.Marker({
+		map: map,
+		position: dakarTaxi,
+		icon: '/img/head-car-map.png',
+		title: 'Dakar Taxi office'
 	});
 
-
-
-
+};
 // Google Analitics
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-49350407-3', 'auto');
-  ga('send', 'pageview');
-
-
-
-
-
-
-
-//IP
-/*var ipData;
-$.getJSON('//freegeoip.net/json/?callback=?', function(data) {
-  ipData = data;
-});
-*/
-})();
+	ga('create', 'UA-49350407-3', 'auto');
+	ga('send', 'pageview');
